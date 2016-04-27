@@ -6,7 +6,7 @@ describe Rover do
   heading = :N
   subject(:rover) { described_class.new(x_coordinate, y_coordinate, heading) }
 
-  let(:direction) { double :direction }
+  # let(:direction) { double :direction }
 
   # it 'initializes with an x coordinate' do
   #   expect(rover.x_coordinate).to eq(1)
