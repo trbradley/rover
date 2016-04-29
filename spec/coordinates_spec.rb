@@ -3,11 +3,11 @@ require 'coordinates'
 describe Coordinates do
   subject(:coordinates) { described_class.new(5, 5) }
 
-  it 'has an x axis' do
+  it 'has an x coordinate' do
     expect(coordinates.x).to eq(5)
   end
 
-  it 'has an y axis' do
+  it 'has a y coordinate' do
     expect(coordinates.x).to eq(5)
   end
 
