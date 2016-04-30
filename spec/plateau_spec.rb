@@ -15,7 +15,7 @@ describe Plateau do
     expect(plateau.instance_variable_get(:@plateau_origin)).to eq(plateau_origin)
   end
 
-  it 'it\'s upper limits can be defined' do
+  it 'its upper limits can be defined' do
     expect(plateau.instance_variable_get(:@plateau_limits)).to eq(plateau_limits)
   end
 end
