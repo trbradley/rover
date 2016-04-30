@@ -3,8 +3,6 @@ require 'direction'
 describe Direction do
   subject(:north) { described_class.new(:N) }
   subject(:south) { described_class.new(:S) }
-  subject(:east) { described_class.new(:E) }
-  subject(:west) { described_class.new(:W) }
 
   it 'initializes with a direction' do
     expect(north.current_direction).to eq(:N)
