@@ -1,19 +1,21 @@
+require_relative 'coordinates'
 require_relative 'direction'
 
 class Rover
-  attr_reader :x_coordinate, :y_coordinate, :heading
-
-  def initialize(x_coordinate, y_coordinate, heading)
-    @x_coordinate = x_coordinate
-    @y_coordinate = y_coordinate
-    @heading ||= Direction.new(heading)
+  def initialize(x, y, direction, coordinates_klass = Coordinates, direction_klass = Direction)
+    @current_coordinates = coordinates_klass.new(x, y)
+    @current_heading = direction_klass.new(direction)
   end
 
   def current_location
-    "#{@x_coordinate}, #{@y_coordinate}, #{@heading.current_direction}"
+    "#{@current_coordinates.x}, #{@current_coordinates.y}, #{@current_heading.current_direction}"
   end
 
-  def change_heading(heading)
-    @heading.new_direction(heading)
+  def turn_left
+    @current_heading = @current_heading.left
+  end
+
+  def turn_right
+    @current_heading = @current_heading.right
   end
 end
