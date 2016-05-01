@@ -13,10 +13,10 @@ class Plateau
   private
 
   def within_x_limits?(coordinates)
-    coordinates.x < @plateau_limits.x && coordinates.x > @plateau_origin.x
+    coordinates.x <= @plateau_limits.x && coordinates.x >= @plateau_origin.x
   end
 
   def within_y_limits?(coordinates)
-    coordinates.y < @plateau_limits.y && coordinates.y > @plateau_origin.y
+    coordinates.y <= @plateau_limits.y && coordinates.y >= @plateau_origin.y
   end
 end

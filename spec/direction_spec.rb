@@ -2,6 +2,7 @@ require 'direction'
 
 describe Direction do
   subject(:north) { described_class.new(:N) }
+  subject(:west) { described_class.new(:W) }
   subject(:south) { described_class.new(:S) }
 
   it 'initializes with a direction' do
@@ -9,22 +10,28 @@ describe Direction do
   end
 
   describe '#left' do
-    it 'when North, creates a new direction to the left(west)' do
-      expect(north.left).to eq(:W)
+    it 'when North, creates a new direction' do
+      expect(north.left).not_to eq(north)
     end
 
-    it 'when South, creates a new direction to the left(east)' do
-      expect(south.left).to eq(:E)
+    it 'when South, creates a new direction' do
+      expect(south.left).not_to eq(south)
     end
   end
 
   describe '#right' do
-    it 'when North, creates a new direction to the right(east)' do
-      expect(north.right).to eq(:E)
+    it 'when North, creates a new direction' do
+      expect(north.right).not_to eq(north)
     end
 
-    it 'when South, creates a new direction to the right(west)' do
-      expect(south.right).to eq(:W)
+    it 'when South, creates a new direction' do
+      expect(south.right).not_to eq(south)
+    end
+  end
+
+  describe '#coord_shift' do
+    it 'returns an array with correct change to coordinates' do
+      expect(north.coord_shift).to eq([0, 1])
     end
   end
 end
