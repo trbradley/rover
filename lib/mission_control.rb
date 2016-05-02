@@ -1,8 +1,7 @@
 class MissionControl
-
   def initialize
     @plateau = nil
-    @rover = nil
+    @rovers = []
     puts 'Welcome to the Mars Rover Mission Control'
   end
 
@@ -13,19 +12,19 @@ class MissionControl
     puts "Plateau consists of a #{plateau_size[0]} x #{plateau_size[1]} grid"
   end
 
-  def generate_rover
+  def generate_rover(rover_number)
     print 'Input rover coordinates and heading, separated by spaces (x y heading): '
     rover_info = gets.chomp.upcase.split(' ')
-    @rover = Rover.new(rover_info[0], rover_info[1], rover_info[2])
-    deploy_rover(@rover)
-    puts "Rover's current location and heading is #{@rover.current_location}"
+    @rovers[rover_number] = Rover.new(rover_info[0], rover_info[1], rover_info[2])
+    deploy_rover(@rovers[rover_number])
+    puts "Rover's current location and heading is #{@rovers[rover_number].current_location}"
   end
 
-  def instruct_rover
+  def instruct_rover(rover_number)
     print 'Input movement instructions for rover (eg. LLMRM): '
     instructions = gets.chomp.upcase.split('')
-    rover_instruction_parser(instructions)
-    puts "Rover's current location and heading is #{@rover.current_location}"
+    rover_instruction_parser(rover_number, instructions)
+    puts "Rover's current location and heading is #{@rovers[rover_number].current_location}"
   end
 
   private
@@ -34,14 +33,14 @@ class MissionControl
     rover.deploy(@plateau)
   end
 
-  def rover_instruction_parser(instructions)
+  def rover_instruction_parser(rover_number, instructions)
     instructions.each do |c|
       if    c == 'L'
-        @rover.turn_left
+        @rovers[rover_number].turn_left
       elsif c == 'R'
-        @rover.turn_right
+        @rovers[rover_number].turn_right
       elsif c == 'M'
-        @rover.move
+        @rovers[rover_number].move
       else print "#{c} is not a valid instruction"
       end
     end
