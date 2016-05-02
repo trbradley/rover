@@ -1,5 +1,3 @@
-require_relative 'coordinates'
-
 class Plateau
   def initialize(x_length, y_length, coordinates_klass = Coordinates)
     @plateau_origin = coordinates_klass.new(0, 0)

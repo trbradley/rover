@@ -1,7 +1,3 @@
-require_relative 'coordinates'
-require_relative 'direction'
-require_relative 'plateau'
-
 class Rover
   attr_reader :plateau
 
@@ -28,7 +24,8 @@ class Rover
   end
 
   def move
-    raise 'Plateau boundary reached' unless @plateau.within_boundary?(@current_coordinates.new_coordinates(x_move, y_move))
+    out_of_bounds = 'Plateau boundary reached'
+    raise out_of_bounds unless @plateau.within_boundary?(@current_coordinates.new_coordinates(x_move, y_move))
 
     @current_coordinates = @current_coordinates.new_coordinates(x_move, y_move)
   end
