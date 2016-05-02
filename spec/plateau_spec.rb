@@ -1,4 +1,4 @@
-require 'plateau'
+require 'models/plateau'
 
 describe Plateau do
   let(:coordinates_klass) { double :Coordinates }

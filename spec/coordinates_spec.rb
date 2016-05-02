@@ -1,4 +1,4 @@
-require 'coordinates'
+require 'models/coordinates'
 
 describe Coordinates do
   subject(:coordinates) { described_class.new(5, 5) }

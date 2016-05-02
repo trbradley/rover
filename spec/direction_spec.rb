@@ -1,4 +1,4 @@
-require 'direction'
+require 'models/direction'
 
 describe Direction do
   subject(:north) { described_class.new(:N) }
