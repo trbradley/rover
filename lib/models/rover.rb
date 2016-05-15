@@ -25,9 +25,9 @@ class Rover
 
   def move
     out_of_bounds = 'Plateau boundary reached'
-    raise out_of_bounds unless @plateau.within_boundary?(@current_coordinates.new_coordinates(x_move, y_move))
-
-    @current_coordinates = @current_coordinates.new_coordinates(x_move, y_move)
+    if @plateau.within_boundary?(@current_coordinates.new_coordinates(x_move, y_move))
+      @current_coordinates = @current_coordinates.new_coordinates(x_move, y_move)
+    end
   end
 
 

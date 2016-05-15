@@ -44,13 +44,31 @@ describe Rover do
       rover.move
     end
 
-    it 'raises an error if movement would pass boundary of plateau' do
+    # it 'raises an error if movement would pass boundary of plateau' do
+    #   allow(plateau).to receive(:within_boundary?).and_return(false)
+    #
+    #   out_of_bounds = 'Plateau boundary reached'
+    #   rover = described_class.new(5, 5, :N)
+    #   rover.deploy(plateau)
+    #   expect { rover.move }.to raise_error out_of_bounds
+    # end
+
+    # it 'prints an message if moving would put it out of bounds' do
+    #   allow(plateau).to receive(:within_boundary?).and_return(false)
+    #
+    #   out_of_bounds = 'Plateau boundary reached'
+    #   rover = described_class.new(5, 5, :N)
+    #   rover.deploy(plateau)
+    #   expect { rover.move }.to output(out_of_bounds).to_stdout
+    # end
+
+    it 'does not move if moving would put it out of bounds' do
       allow(plateau).to receive(:within_boundary?).and_return(false)
 
-      out_of_bounds = 'Plateau boundary reached'
       rover = described_class.new(5, 5, :N)
       rover.deploy(plateau)
-      expect { rover.move }.to raise_error out_of_bounds
+      rover.move
+      expect(rover.current_location).to eq('5, 5, N')
     end
   end
 
